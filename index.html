@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steve J. Ngoumnai — Life & Career Coaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#060606;
+  --ink:#0c0c0c;
+  --charcoal:#131313;
+  --panel:#181818;
+  --red:#bc2318;
+  --red-soft:rgba(188,35,24,0.12);
+  --gold:#b8861a;
+  --gold2:#d4a53e;
+  --cream:#efe9dd;
+  --cream2:#e3dcd0;
+  --muted:rgba(239,233,221,0.4);
+  --faint:rgba(239,233,221,0.07);
+}
+html{scroll-behavior:smooth;cursor:none}
+body{
+  background:var(--black);color:var(--cream);
+  font-family:'Inter',sans-serif;font-weight:300;
+  line-height:1.7;overflow-x:hidden;
+}
+
+/* ── CURSOR ── */
+#c{position:fixed;width:7px;height:7px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference}
+#cr{position:fixed;width:28px;height:28px;border:1px solid rgba(239,233,221,0.22);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .28s,height .28s,border-color .28s}
+#c.h{width:5px;height:5px;background:var(--gold)}
+#cr.h{width:50px;height:50px;border-color:rgba(184,134,26,0.45)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.8rem 5rem;display:flex;justify-content:space-between;align-items:center;transition:padding .5s,background .5s,border .5s}
+nav.s{padding:1rem 5rem;background:rgba(6,6,6,0.94);backdrop-filter:blur(28px);border-bottom:1px solid rgba(255,255,255,0.04)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.22em;color:var(--cream);text-decoration:none;transition:letter-spacing .4s}
+.logo:hover{letter-spacing:.28em}
+.logo b{color:var(--red)}
+.nav-r{display:flex;align-items:center;gap:2.8rem}
+.nl{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;position:relative}
+.nl::after{content:'';position:absolute;left:0;bottom:-.3rem;width:0;height:1px;background:var(--red);transition:width .35s}
+.nl:hover{color:var(--cream)}
+.nl:hover::after{width:100%}
+.nb{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);text-decoration:none;border:1px solid rgba(239,233,221,0.18);padding:.55rem 1.4rem;transition:all .35s;position:relative;overflow:hidden}
+.nb::before{content:'';position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.nb:hover::before{transform:scaleX(1)}
+.nb span{position:relative;z-index:1}
+
+/* ══════════════════════════════
+   HERO — full viewport, split
+══════════════════════════════ */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;position:relative;overflow:hidden}
+
+/* animated noise */
+.noise{position:absolute;inset:-100%;width:300%;height:300%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.032;animation:noise .65s steps(3) infinite;pointer-events:none;z-index:1}
+@keyframes noise{0%{transform:translate(0,0)}25%{transform:translate(-3%,4%)}50%{transform:translate(5%,-2%)}75%{transform:translate(-2%,5%)}100%{transform:translate(4%,-3%)}}
+
+/* left col */
+.hl{
+  position:relative;z-index:3;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:11rem 4rem 6rem 5.5rem;
+}
+
+/* vertical red thread */
+.hl::before{content:'';position:absolute;left:0;top:15%;bottom:15%;width:2px;background:linear-gradient(to bottom,transparent,var(--red) 35%,var(--red) 65%,transparent)}
+
+.h-eye{
+  font-size:.63rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:2.8rem;display:flex;align-items:center;gap:.9rem;
+  opacity:0;animation:up .8s cubic-bezier(.16,1,.3,1) .15s forwards;
+}
+.h-eye::before{content:'';width:22px;height:1px;background:var(--gold);display:block}
+
+.hh{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4.8rem,9.5vw,9rem);
+  line-height:.86;letter-spacing:.025em;
+  margin-bottom:3.2rem;
+}
+.hh .a{display:block;opacity:0;animation:up .95s cubic-bezier(.16,1,.3,1) .3s forwards;color:var(--cream)}
+.hh .b{display:block;color:var(--red);opacity:0;animation:up .95s cubic-bezier(.16,1,.3,1) .48s forwards}
+.hh .c{
+  display:block;color:transparent;
+  -webkit-text-stroke:1.5px var(--cream);
+  opacity:0;animation:up .95s cubic-bezier(.16,1,.3,1) .66s forwards;
+}
+@keyframes up{from{opacity:0;transform:translateY(80px) skewY(3deg)}to{opacity:1;transform:none}}
+@keyframes fd{from{opacity:0}to{opacity:1}}
+
+.hd{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.18rem;
+  color:var(--muted);line-height:1.78;max-width:420px;margin-bottom:3.2rem;
+  opacity:0;animation:fd 1s ease .9s forwards;
+}
+.hd strong{color:var(--cream);font-style:normal;font-weight:600}
+
+.h-btns{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;opacity:0;animation:fd 1s ease 1.05s forwards}
+
+.btn-r{
+  display:inline-block;background:var(--red);color:var(--cream);text-decoration:none;
+  padding:1.05rem 2.6rem;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+  position:relative;overflow:hidden;transition:transform .3s;
+}
+.btn-r::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.09);transform:translateX(-110%) skewX(-18deg);transition:transform .55s cubic-bezier(.16,1,.3,1)}
+.btn-r:hover::after{transform:translateX(110%) skewX(-18deg)}
+.btn-r:hover{transform:translateY(-3px)}
+
+.btn-o{
+  display:inline-block;color:rgba(239,233,221,.5);text-decoration:none;
+  padding:1.05rem 1.8rem;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  border:1px solid rgba(239,233,221,.1);transition:all .35s;
+}
+.btn-o:hover{color:var(--cream);border-color:rgba(239,233,221,.28)}
+
+/* right col — photo */
+.hr{position:relative;overflow:hidden}
+.hphoto{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg, #1a0f0f 0%, #0c0c0c 50%, #1a1208 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.hphoto-inner{
+  width:70%;
+  aspect-ratio:3/4;
+  background:linear-gradient(160deg,#2a1a1a,#181818,#1a1408);
+  position:relative;
+  overflow:hidden;
+}
+.hphoto-inner::before{
+  content:'SJN';
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:8rem;
+  color:rgba(188,35,24,0.08);
+  letter-spacing:.3em;
+}
+.hphoto-inner::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,transparent 60%,rgba(6,6,6,0.85));
+}
+.hero-img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+.hero-photo-label{
+  position:absolute;bottom:2.5rem;left:2.5rem;z-index:4;
+  font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:.7rem;
+}
+.hero-photo-label::before{content:'';width:18px;height:1px;background:var(--gold)}
+
+/* hero bottom stats */
+.h-stats{
+  position:absolute;bottom:3rem;left:5.5rem;z-index:5;
+  display:flex;gap:3.5rem;
+  opacity:0;animation:fd 1s ease 1.3s forwards;
+}
+.h-stat .num{
+  font-family:'Bebas Neue',sans-serif;font-size:2.8rem;
+  color:var(--cream);letter-spacing:.04em;line-height:1;
+}
+.h-stat .num span{color:var(--red)}
+.h-stat .lbl{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+
+/* ══════════════════════════════
+   MARQUEE STRIP
+══════════════════════════════ */
+.marquee-wrap{
+  background:var(--red);padding:.8rem 0;overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.marquee-track{
+  display:flex;gap:0;white-space:nowrap;
+  animation:marquee 22s linear infinite;
+}
+.marquee-track span{
+  font-family:'Bebas Neue',sans-serif;font-size:1rem;
+  letter-spacing:.22em;color:rgba(239,233,221,.92);
+  padding:0 2.5rem;
+}
+.marquee-track .dot{color:rgba(239,233,221,.38);padding:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════════════════════════
+   ABOUT
+══════════════════════════════ */
+#about{
+  padding:9rem 5.5rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:6rem;
+  align-items:center;
+}
+.about-label{
+  font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.8rem;display:flex;align-items:center;gap:.9rem;
+}
+.about-label::before{content:'';width:22px;height:1px;background:var(--gold)}
+.about-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,5vw,5rem);
+  line-height:.9;letter-spacing:.03em;
+  margin-bottom:2.4rem;
+}
+.about-h em{color:var(--red);font-style:normal}
+.about-body{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.12rem;line-height:1.9;
+  color:rgba(239,233,221,.72);
+  margin-bottom:2rem;
+}
+.about-body strong{color:var(--cream);font-weight:600}
+.about-sig{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:1.4rem;
+  color:var(--gold);margin-top:2.4rem;
+}
+.about-r{position:relative}
+.about-photo-wrap{
+  position:relative;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  background:var(--panel);
+}
+.about-photo-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.about-photo-wrap:hover img{transform:scale(1.04)}
+.about-photo-wrap::after{
+  content:'';position:absolute;
+  top:1.2rem;left:1.2rem;right:-1.2rem;bottom:-1.2rem;
+  border:1px solid var(--red-soft);z-index:-1;
+}
+.about-badge{
+  position:absolute;bottom:-2rem;right:-2rem;
+  width:120px;height:120px;
+  background:var(--red);
+  border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;z-index:4;
+  animation:spin 20s linear infinite;
+}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.about-badge-inner{
+  position:absolute;
+  inset:0;display:flex;align-items:center;justify-content:center;
+  animation:spin 20s linear infinite reverse;
+}
+.about-badge-inner span{
+  font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(239,233,221,.9);line-height:1.5;text-align:center;max-width:70px;
+}
+
+/* ══════════════════════════════
+   SERVICES
+══════════════════════════════ */
+#services{
+  padding:9rem 5.5rem;
+  background:var(--charcoal);
+  position:relative;overflow:hidden;
+}
+#services::before{
+  content:'';position:absolute;
+  right:-200px;top:-200px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(188,35,24,0.06),transparent 70%);
+  pointer-events:none;
+}
+.sec-label{
+  font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.2rem;display:flex;align-items:center;gap:.9rem;
+}
+.sec-label::before{content:'';width:22px;height:1px;background:var(--gold)}
+.sec-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,5vw,5rem);
+  line-height:.9;letter-spacing:.03em;
+  margin-bottom:5rem;
+  max-width:700px;
+}
+.sec-h em{color:var(--red);font-style:normal}
+.svc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;
+  background:rgba(239,233,221,.06);
+}
+.svc{
+  background:var(--charcoal);
+  padding:3rem 2.8rem;
+  position:relative;overflow:hidden;
+  transition:background .35s;
+}
+.svc::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--red);transform:scaleX(0);transform-origin:left;
+  transition:transform .45s cubic-bezier(.16,1,.3,1);
+}
+.svc:hover::before{transform:scaleX(1)}
+.svc:hover{background:var(--panel)}
+.svc-num{
+  font-family:'Bebas Neue',sans-serif;font-size:4.5rem;
+  color:rgba(239,233,221,.05);line-height:1;
+  position:absolute;top:1.5rem;right:2rem;letter-spacing:.04em;
+}
+.svc-icon{
+  width:48px;height:48px;
+  border:1px solid rgba(239,233,221,.1);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:2rem;
+  transition:border-color .3s;
+}
+.svc:hover .svc-icon{border-color:var(--red)}
+.svc-icon svg{width:22px;height:22px;stroke:var(--gold);stroke-width:1.5;fill:none}
+.svc-title{
+  font-family:'Bebas Neue',sans-serif;font-size:1.6rem;
+  letter-spacing:.06em;color:var(--cream);margin-bottom:1rem;
+}
+.svc-body{
+  font-size:.85rem;color:var(--muted);line-height:1.8;
+}
+.svc-link{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;margin-top:2rem;
+  transition:gap .3s;
+}
+.svc-link:hover{gap:1rem}
+.svc-link svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
+
+/* ══════════════════════════════
+   PROCESS
+══════════════════════════════ */
+#process{
+  padding:9rem 5.5rem;
+  display:grid;grid-template-columns:38% 1fr;gap:5rem;
+  align-items:start;
+}
+.process-l .sec-h{margin-bottom:2rem}
+.process-desc{
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;
+  color:rgba(239,233,221,.65);line-height:1.9;margin-bottom:3rem;
+}
+.process-steps{display:flex;flex-direction:column;gap:0}
+.step{
+  display:grid;grid-template-columns:80px 1fr;
+  padding:2.5rem 0;
+  border-bottom:1px solid rgba(239,233,221,.06);
+  position:relative;overflow:hidden;
+  transition:padding .35s;
+}
+.step::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:0;
+  background:var(--red-soft);transition:width .45s cubic-bezier(.16,1,.3,1);
+}
+.step:hover::before{width:100%}
+.step:hover{padding-left:1rem}
+.step-n{
+  font-family:'Bebas Neue',sans-serif;font-size:3rem;
+  color:rgba(239,233,221,.08);letter-spacing:.04em;line-height:1;
+  align-self:center;
+}
+.step-info{}
+.step-title{
+  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;
+  letter-spacing:.06em;color:var(--cream);margin-bottom:.6rem;
+}
+.step-body{font-size:.84rem;color:var(--muted);line-height:1.8}
+
+/* ══════════════════════════════
+   TESTIMONIALS
+══════════════════════════════ */
+#testimonials{
+  padding:9rem 5.5rem;
+  background:var(--charcoal);
+  position:relative;overflow:hidden;
+}
+#testimonials::after{
+  content:'"';
+  position:absolute;top:-2rem;right:3rem;
+  font-family:'Cormorant Garamond',serif;font-size:28rem;
+  color:rgba(239,233,221,.02);line-height:1;
+  pointer-events:none;
+}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:5rem}
+.t-card{
+  background:var(--panel);
+  padding:3rem;
+  position:relative;
+  border-top:2px solid transparent;
+  transition:border-color .35s;
+}
+.t-card:hover{border-color:var(--red)}
+.t-quote{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:1.05rem;line-height:1.85;
+  color:rgba(239,233,221,.75);
+  margin-bottom:2.5rem;
+}
+.t-author{display:flex;align-items:center;gap:1rem}
+.t-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--charcoal);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:.9rem;
+  color:var(--gold);letter-spacing:.05em;
+  border:1px solid rgba(184,134,26,.2);
+  flex-shrink:0;
+}
+.t-name{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin-bottom:.25rem}
+.t-role{font-size:.7rem;color:var(--muted);letter-spacing:.08em}
+.t-stars{
+  display:flex;gap:3px;margin-bottom:1.5rem;
+}
+.t-stars span{color:var(--gold);font-size:.7rem}
+
+/* ══════════════════════════════
+   CTA BAND
+══════════════════════════════ */
+#cta{
+  padding:9rem 5.5rem;
+  display:grid;grid-template-columns:1fr auto;gap:4rem;
+  align-items:center;
+  position:relative;overflow:hidden;
+}
+#cta::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(188,35,24,.08),transparent);
+  pointer-events:none;
+}
+.cta-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.5rem,6vw,6.5rem);
+  line-height:.88;letter-spacing:.025em;
+  max-width:700px;
+}
+.cta-h em{
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--cream);
+  font-style:normal;
+}
+.cta-h span{color:var(--red)}
+.cta-r{display:flex;flex-direction:column;gap:1.2rem;min-width:220px;align-items:flex-end}
+
+/* ══════════════════════════════
+   CONTACT
+══════════════════════════════ */
+#contact{
+  padding:9rem 5.5rem;
+  background:var(--charcoal);
+  display:grid;grid-template-columns:1fr 1fr;gap:7rem;
+}
+.contact-info{}
+.contact-form{}
+.contact-detail{
+  display:flex;flex-direction:column;gap:2.5rem;margin-top:3rem;
+}
+.cd{display:flex;gap:1.5rem;align-items:flex-start}
+.cd-icon{
+  width:44px;height:44px;border:1px solid rgba(239,233,221,.1);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:border-color .3s;
+}
+.cd:hover .cd-icon{border-color:var(--red)}
+.cd-icon svg{width:18px;height:18px;stroke:var(--gold);stroke-width:1.5;fill:none}
+.cd-lbl{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.cd-val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--cream)}
+.form-row{margin-bottom:1.5rem}
+.form-row label{display:block;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+.form-row input,
+.form-row textarea,
+.form-row select{
+  width:100%;background:rgba(239,233,221,.04);
+  border:1px solid rgba(239,233,221,.1);
+  color:var(--cream);padding:1rem 1.2rem;
+  font-family:'Inter',sans-serif;font-weight:300;font-size:.9rem;
+  outline:none;transition:border-color .3s;
+  -webkit-appearance:none;appearance:none;
+}
+.form-row input:focus,
+.form-row textarea:focus,
+.form-row select:focus{border-color:var(--red)}
+.form-row textarea{height:140px;resize:vertical}
+.form-row select option{background:var(--panel);color:var(--cream)}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer{
+  padding:4rem 5.5rem;
+  border-top:1px solid rgba(239,233,221,.06);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:2rem;
+}
+.f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.22em;color:var(--cream)}
+.f-logo b{color:var(--red)}
+.f-links{display:flex;gap:2.5rem}
+.f-links a{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
+.f-links a:hover{color:var(--cream)}
+.f-copy{font-size:.64rem;letter-spacing:.1em;color:rgba(239,233,221,.22)}
+
+/* ── DIVIDER ── */
+.div{
+  height:1px;background:linear-gradient(to right,transparent,rgba(239,233,221,.08) 30%,rgba(239,233,221,.08) 70%,transparent);
+  margin:0 5.5rem;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.vis{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+.reveal-d4{transition-delay:.4s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  nav{padding:1.4rem 3rem}
+  nav.s{padding:.9rem 3rem}
+  .hero{grid-template-columns:1fr}
+  .hr{display:none}
+  .hl{padding:10rem 3rem 5rem}
+  .h-stats{left:3rem;bottom:2rem}
+  #about,#contact{grid-template-columns:1fr;gap:4rem}
+  .about-r{display:none}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  #process{grid-template-columns:1fr;gap:3rem}
+  #cta{grid-template-columns:1fr;gap:3rem}
+  .cta-r{align-items:flex-start}
+  .t-grid{grid-template-columns:1fr 1fr}
+  #about,#services,#process,#testimonials,#cta,#contact{padding-left:3rem;padding-right:3rem}
+  footer{padding:3rem}
+  .div{margin:0 3rem}
+}
+@media(max-width:640px){
+  nav{padding:1.2rem 1.5rem}
+  nav.s{padding:.8rem 1.5rem}
+  .nav-r .nl{display:none}
+  .hl{padding:8rem 1.5rem 4rem}
+  .h-stats{left:1.5rem;gap:2rem}
+  .svc-grid{grid-template-columns:1fr}
+  .t-grid{grid-template-columns:1fr}
+  .form-2col{grid-template-columns:1fr}
+  #about,#services,#process,#testimonials,#cta,#contact{padding-left:1.5rem;padding-right:1.5rem}
+  footer{padding:2.5rem 1.5rem;flex-direction:column;align-items:flex-start}
+  .div{margin:0 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div id="c"></div>
+<div id="cr"></div>
+
+<!-- Navigation -->
+<nav id="nav">
+  <a href="#" class="logo">Steve <b>J.</b> Ngoumnai</a>
+  <div class="nav-r">
+    <a href="#about"   class="nl">About</a>
+    <a href="#services" class="nl">Services</a>
+    <a href="#process" class="nl">Process</a>
+    <a href="#testimonials" class="nl">Testimonials</a>
+    <a href="#contact" class="nb"><span>Book a Call</span></a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="noise"></div>
+
+  <div class="hl">
+    <p class="h-eye">Life & Career Coaching</p>
+
+    <h1 class="hh">
+      <span class="a">Unlock</span>
+      <span class="b">Your</span>
+      <span class="c">Potential</span>
+    </h1>
+
+    <p class="hd">
+      Helping driven professionals <strong>break through barriers,</strong>
+      clarify their vision, and build lives of purpose —
+      one intentional step at a time.
+    </p>
+
+    <div class="h-btns">
+      <a href="#contact" class="btn-r">Start Your Journey</a>
+      <a href="#services" class="btn-o">Explore Services</a>
+    </div>
+
+    <div class="h-stats">
+      <div class="h-stat">
+        <div class="num">12<span>+</span></div>
+        <div class="lbl">Years Experience</div>
+      </div>
+      <div class="h-stat">
+        <div class="num">400<span>+</span></div>
+        <div class="lbl">Lives Transformed</div>
+      </div>
+      <div class="h-stat">
+        <div class="num">96<span>%</span></div>
+        <div class="lbl">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hr">
+    <div class="hphoto">
+      <div class="hphoto-inner"></div>
+    </div>
+    <div class="hero-photo-label">Life Coach · Speaker · Mentor</div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Life Coaching</span><span class="dot">·</span>
+    <span>Career Development</span><span class="dot">·</span>
+    <span>Executive Presence</span><span class="dot">·</span>
+    <span>Goal Setting</span><span class="dot">·</span>
+    <span>Mindset Mastery</span><span class="dot">·</span>
+    <span>Leadership Growth</span><span class="dot">·</span>
+    <span>Work-Life Alignment</span><span class="dot">·</span>
+    <span>Personal Brand</span><span class="dot">·</span>
+    <!-- repeat for seamless loop -->
+    <span>Life Coaching</span><span class="dot">·</span>
+    <span>Career Development</span><span class="dot">·</span>
+    <span>Executive Presence</span><span class="dot">·</span>
+    <span>Goal Setting</span><span class="dot">·</span>
+    <span>Mindset Mastery</span><span class="dot">·</span>
+    <span>Leadership Growth</span><span class="dot">·</span>
+    <span>Work-Life Alignment</span><span class="dot">·</span>
+    <span>Personal Brand</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="about-l">
+    <p class="about-label reveal">About Steve</p>
+    <h2 class="about-h reveal reveal-d1">The Coach <em>Behind</em><br>The Vision</h2>
+    <p class="about-body reveal reveal-d2">
+      With over a decade guiding ambitious professionals, <strong>Steve J. Ngoumnai</strong>
+      brings a rare blend of corporate insight and human-centered coaching.
+      His approach is direct, evidence-based, and deeply personal.
+    </p>
+    <p class="about-body reveal reveal-d2">
+      Whether you're navigating a career pivot, stepping into leadership, or simply
+      feeling stuck — Steve's frameworks help you move from <strong>clarity to conviction,</strong>
+      and from intention to measurable action.
+    </p>
+    <p class="about-sig reveal reveal-d3">— Steve J. Ngoumnai</p>
+  </div>
+  <div class="about-r reveal reveal-d2">
+    <div class="about-photo-wrap">
+      <div style="width:100%;height:100%;min-height:480px;background:linear-gradient(160deg,#2a1a1a,#181818,#1a1408);display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(188,35,24,0.15);letter-spacing:.2em">SJN</span>
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-inner">
+          <span>Certified<br>Life Coach<br>★</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- Services -->
+<section id="services">
+  <p class="sec-label reveal">What I Offer</p>
+  <h2 class="sec-h reveal reveal-d1">Coaching That <em>Moves</em><br>The Needle</h2>
+
+  <div class="svc-grid">
+    <div class="svc reveal">
+      <span class="svc-num">01</span>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <h3 class="svc-title">1-on-1 Life Coaching</h3>
+      <p class="svc-body">Personalised sessions designed around your unique challenges, values, and goals. Build momentum that lasts beyond the conversation.</p>
+      <a href="#contact" class="svc-link">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="svc reveal reveal-d1">
+      <span class="svc-num">02</span>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg>
+      </div>
+      <h3 class="svc-title">Career Development</h3>
+      <p class="svc-body">Navigate transitions, position yourself for promotion, and build the executive presence that commands respect in any room.</p>
+      <a href="#contact" class="svc-link">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="svc reveal reveal-d2">
+      <span class="svc-num">03</span>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h3 class="svc-title">Mindset Mastery</h3>
+      <p class="svc-body">Identify and dismantle the limiting beliefs that keep you playing small. Rewire your thinking for sustainable high performance.</p>
+      <a href="#contact" class="svc-link">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="svc reveal reveal-d1">
+      <span class="svc-num">04</span>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3 class="svc-title">Group Workshops</h3>
+      <p class="svc-body">Energising cohort experiences for teams and organisations. Cultivate shared purpose, communication, and collective resilience.</p>
+      <a href="#contact" class="svc-link">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="svc reveal reveal-d2">
+      <span class="svc-num">05</span>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3 class="svc-title">Goal Architecture</h3>
+      <p class="svc-body">Transform vague ambitions into a concrete, measurable roadmap. Learn the frameworks used by top performers to execute with precision.</p>
+      <a href="#contact" class="svc-link">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="svc reveal reveal-d3">
+      <span class="svc-num">06</span>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3 class="svc-title">VIP Intensive Day</h3>
+      <p class="svc-body">A focused full-day deep dive. Arrive with your biggest challenge — leave with total clarity, a detailed action plan, and renewed energy.</p>
+      <a href="#contact" class="svc-link">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- Process -->
+<section id="process">
+  <div class="process-l">
+    <p class="sec-label reveal">How It Works</p>
+    <h2 class="sec-h reveal reveal-d1">A Proven <em>Path</em><br>Forward</h2>
+    <p class="process-desc reveal reveal-d2">
+      Every journey begins with honest conversation and ends with
+      tangible transformation. Here's what working together looks like.
+    </p>
+    <a href="#contact" class="btn-r reveal reveal-d3" style="display:inline-block">Book Discovery Call</a>
+  </div>
+
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-n">01</div>
+      <div class="step-info">
+        <div class="step-title">Discovery Conversation</div>
+        <p class="step-body">We begin with a free 30-minute call to understand where you are, where you want to be, and whether we're the right fit for this work.</p>
+      </div>
+    </div>
+    <div class="step reveal reveal-d1">
+      <div class="step-n">02</div>
+      <div class="step-info">
+        <div class="step-title">Deep Diagnostic</div>
+        <p class="step-body">A comprehensive assessment of your values, strengths, blind spots, and goals — building the full picture we'll work from.</p>
+      </div>
+    </div>
+    <div class="step reveal reveal-d2">
+      <div class="step-n">03</div>
+      <div class="step-info">
+        <div class="step-title">Custom Roadmap</div>
+        <p class="step-body">Together we co-create a tailored coaching plan with clear milestones, accountability structures, and defined outcomes.</p>
+      </div>
+    </div>
+    <div class="step reveal reveal-d3">
+      <div class="step-n">04</div>
+      <div class="step-info">
+        <div class="step-title">Ongoing Sessions</div>
+        <p class="step-body">Regular sessions keep momentum high. We course-correct in real time, celebrate wins, and deepen the work as you grow.</p>
+      </div>
+    </div>
+    <div class="step reveal reveal-d4">
+      <div class="step-n">05</div>
+      <div class="step-info">
+        <div class="step-title">Integration & Legacy</div>
+        <p class="step-body">Coaching concludes when you no longer need it — equipped with tools, mindsets, and habits to keep thriving independently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <p class="sec-label reveal">Client Stories</p>
+  <h2 class="sec-h reveal reveal-d1">Words From Those<br>Who <em>Dared</em> to Change</h2>
+
+  <div class="t-grid">
+    <div class="t-card reveal">
+      <div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="t-quote">"Steve helped me see the story I was telling myself about why I couldn't advance. Three months in, I got the promotion I'd been chasing for two years."</p>
+      <div class="t-author">
+        <div class="t-avatar">AM</div>
+        <div>
+          <div class="t-name">Amara Mensah</div>
+          <div class="t-role">Senior Product Manager, Tech</div>
+        </div>
+      </div>
+    </div>
+    <div class="t-card reveal reveal-d1">
+      <div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="t-quote">"I came in scattered and overwhelmed. Steve's framework gave me a lens through which everything suddenly made sense. Truly life-altering work."</p>
+      <div class="t-author">
+        <div class="t-avatar">JB</div>
+        <div>
+          <div class="t-name">James Beaumont</div>
+          <div class="t-role">Founder & CEO, Consultancy</div>
+        </div>
+      </div>
+    </div>
+    <div class="t-card reveal reveal-d2">
+      <div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="t-quote">"The VIP Intensive Day was the best investment I've made in myself. I left with a crystal-clear vision and the courage to finally act on it."</p>
+      <div class="t-author">
+        <div class="t-avatar">SL</div>
+        <div>
+          <div class="t-name">Sofia Laurent</div>
+          <div class="t-role">Executive Director, Non-Profit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Band -->
+<section id="cta">
+  <div>
+    <h2 class="cta-h reveal">
+      Ready to <em>Stop</em><br>Waiting and <span>Start</span><br>Living?
+    </h2>
+  </div>
+  <div class="cta-r reveal reveal-d1">
+    <a href="#contact" class="btn-r">Book a Free Discovery Call</a>
+    <a href="#services" class="btn-o">Explore All Services</a>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="contact-info">
+    <p class="sec-label reveal">Get In Touch</p>
+    <h2 class="sec-h reveal reveal-d1" style="margin-bottom:1rem">Let's Start a<br><em>Conversation</em></h2>
+    <p class="process-desc reveal reveal-d2" style="margin-top:1rem">
+      Whether you're ready to commit or simply curious — reach out.
+      Every transformation begins with a single conversation.
+    </p>
+    <div class="contact-detail">
+      <div class="cd reveal">
+        <div class="cd-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div>
+          <div class="cd-lbl">Email</div>
+          <div class="cd-val">steve@ngoumnai.com</div>
+        </div>
+      </div>
+      <div class="cd reveal reveal-d1">
+        <div class="cd-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.22 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg></div>
+        <div>
+          <div class="cd-lbl">Phone</div>
+          <div class="cd-val">+1 (555) 000-0000</div>
+        </div>
+      </div>
+      <div class="cd reveal reveal-d2">
+        <div class="cd-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div>
+          <div class="cd-lbl">Sessions</div>
+          <div class="cd-val">In-Person · Virtual · Global</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal reveal-d1">
+    <form onsubmit="handleForm(event)">
+      <div class="form-2col">
+        <div class="form-row">
+          <label>First Name</label>
+          <input type="text" placeholder="Your first name" required>
+        </div>
+        <div class="form-row">
+          <label>Last Name</label>
+          <input type="text" placeholder="Your last name" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-row">
+        <label>Area of Interest</label>
+        <select>
+          <option value="">Select a service</option>
+          <option>1-on-1 Life Coaching</option>
+          <option>Career Development</option>
+          <option>Mindset Mastery</option>
+          <option>Group Workshops</option>
+          <option>Goal Architecture</option>
+          <option>VIP Intensive Day</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Message</label>
+        <textarea placeholder="Tell me a little about where you are and what you're hoping to achieve…"></textarea>
+      </div>
+      <button type="submit" class="btn-r" style="border:none;cursor:none;width:100%">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="f-logo">Steve <b>J.</b> Ngoumnai</div>
+  <div class="f-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="f-copy">&copy; 2026 Steve J. Ngoumnai. All rights reserved.</div>
+</footer>
+
+<script>
+/* ── Cursor ── */
+const c=document.getElementById('c'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.left=mx+'px';c.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,[data-hover]').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{c.classList.add('h');cr.classList.add('h')});
+  el.addEventListener('mouseleave',()=>{c.classList.remove('h');cr.classList.remove('h')});
+});
+
+/* ── Sticky Nav ── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>60));
+
+/* ── Scroll Reveal ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ── Form ── */
+function handleForm(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button');
+  btn.textContent='Message Sent ✓';
+  btn.style.background='var(--gold)';
+  setTimeout(()=>{e.target.reset();btn.textContent='Send Message';btn.style.background=''},4000);
+}
+</script>
+</body>
+</html>
