@@ -1018,9 +1018,9 @@ footer{
   <div class="hero-left">
     <div class="hero-eyebrow">Life · Money · Career</div>
     <h1 class="hero-h1 blur-on-speed" id="hero-h1">
-      <span class="line-1" id="hero-line1"><span class="hero-char">T</span><span class="hero-char">U</span><span class="hero-char">R</span><span class="hero-char">N</span><span class="hero-char"> </span><span class="hero-char">Y</span><span class="hero-char">O</span><span class="hero-char">U</span><span class="hero-char">R</span></span>
+      <span class="line-1" id="hero-line1"><span class="hero-char">T</span><span class="hero-char">U</span><span class="hero-char">R</span><span class="hero-char">N</span><span class="hero-char">&nbsp;</span><span class="hero-char">Y</span><span class="hero-char">O</span><span class="hero-char">U</span><span class="hero-char">R</span></span>
       <span class="line-2" id="hero-line2"><span class="hero-char">A</span><span class="hero-char">N</span><span class="hero-char">G</span><span class="hero-char">E</span><span class="hero-char">R</span></span>
-      <span class="line-3" id="hero-line3"><span class="hero-char">I</span><span class="hero-char">N</span><span class="hero-char">T</span><span class="hero-char">O</span><span class="hero-char"> </span><span class="hero-char">A</span><span class="hero-char">C</span><span class="hero-char">T</span><span class="hero-char">I</span><span class="hero-char">O</span><span class="hero-char">N</span><span class="hero-char">.</span></span>
+      <span class="line-3" id="hero-line3"><span class="hero-char">I</span><span class="hero-char">N</span><span class="hero-char">T</span><span class="hero-char">O</span><span class="hero-char">&nbsp;</span><span class="hero-char">A</span><span class="hero-char">C</span><span class="hero-char">T</span><span class="hero-char">I</span><span class="hero-char">O</span><span class="hero-char">N</span><span class="hero-char">.</span></span>
     </h1>
     <p class="hero-sub blur-on-speed">You see exactly what&rsquo;s broken. Now build what isn&rsquo;t.</p>
     <div class="hero-cta-row">
@@ -1673,7 +1673,7 @@ const heroH1=document.getElementById('hero-h1');
 const CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 function scrambleChar(el,finalChar,delay){
   // skip spaces and punctuation
-  if(finalChar===' '||finalChar==='.'||finalChar==='!'||finalChar===','||finalChar==='?'){
+  if(finalChar===' '||finalChar==='\u00A0'||finalChar==='.'||finalChar==='!'||finalChar===','||finalChar==='?'){
     setTimeout(()=>{el.textContent=finalChar;},delay);
     return;
   }
